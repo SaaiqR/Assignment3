@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title text-align: center;>Guess my Number!</title>
+    <style>
+body {
+background-color: lightblue;
+}
+
+h1 {
+text-align: center;
+outline-style: dashed;
+font-size: 50px;
+text-shadow: 2px 2px red ;
+}
+p {
+    text-align: center;
+outline-style: hidden;
+font-size: 30px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+text-shadow: 2px 2px crimson;
+}
+button {
+    font-size: larger;
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Guess my Number!</h1>
+    <p id="messageDisplay"> Pick a Number from 1-100</p>
+    <input id="userGuess">
+    <button onclick="guess();">Guess</button>
+    <p id="number-of-guesses"> Number of Guesses</p>
+    <p id="lastGuess"> Last Guess </p>
+    <button onclick="reset();"> Click to reset</button>
+    <script>
+        var theNumber = 12;
+        var currentGuess = 0;
+        var numGuesses = 0;
+        // var messageDisplay = "Pick a number 1-100";
+        var messageDisplay = document.getElementById("messageDisplay");
+        messageDisplay.textContent = "Pick a number 1-100";
+
+        function guess() {
+            currentGuess = Number(document.getElementById("userGuess").value);
+            if (currentGuess > theNumber) {
+                messageDisplay.innerHTML = "You Guessed too High! Guess Lower!"
+            } else if (currentGuess < theNumber) {
+                messageDisplay.innerHTML = "You Guessed too Low! Guess Higher!"
+            } else {
+                messageDisplay.innerHTML = "Yay! You guessed the number!"
+                theNumber = Math.floor(theNumber = (Math.random * 100) + 1);
+            }
+
+            numGuesses++;
+            document.getElementById("number-of-guesses").innerHTML = "Number of Guesses: " + numGuesses;
+            document.getElementById("lastGuess").innerHTML = "Last Guess: " + currentGuess;
+        }
+
+        function reset() {
+            theNumber = Math.floor(Math.random() * 100) + 1;
+            currentGuess = 0;
+            numGuesses = 0;
+            currentGuess = Number(document.getElementById("userGuess").value);
+            if (currentGuess > theNumber) {
+                messageDisplay.innerHTML = "You Guessed too High! Guess Lower!"
+            } else if (currentGuess < theNumber) {
+                messageDisplay.innerHTML = "You Guessed too Low! Guess Higher!"
+            } else {
+                messageDisplay.innerHTML = "Yay! You guessed the number!"
+                theNumber = Math.floor(theNumber = (Math.random * 100) + 1);
+        }}
+    </script>
+</body>
+
+</html>
